@@ -10,7 +10,7 @@ public class Client {
 
     private long nativeClient;
 
-    public static long MICRO_LIBRO_COIN = 1000000;
+    public static long MICRO_LIBRA_COIN = 1000000;
 
     public Client(String host,
                   Short port,
@@ -19,6 +19,13 @@ public class Client {
                   String faucetServer,
                   String mnomenicFile) {
         nativeClient = createNativeClient(host, port, mintKey, syncOnWallet, faucetServer, mnomenicFile);
+    }
+
+    public void close() {
+        if (nativeClient != 0)
+            destroyNativeClient(nativeClient);
+
+        nativeClient = 0;
     }
 
     public long getNativeClient() {
@@ -156,6 +163,8 @@ public class Client {
             String mnemonicFile
     );
 
+    private native void destroyNativeClient(long nativeClient);
+    
     private native void native_test_validator_connection(long nativeClient);
 
     private native Pair<Long, byte[]> nativeCreateNextAccount(long nativeClient);

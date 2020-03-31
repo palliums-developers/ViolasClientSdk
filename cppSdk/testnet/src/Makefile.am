@@ -1,4 +1,5 @@
 bin_PROGRAMS    = testnet test_jni
+
 testnet_SOURCES = test_violas.cpp
 testnet_CXXFLAGS= -std=c++17 -I$(top_srcdir)/cppSdk/src
 testnet_LDFLAGS = -Wl,-rpath=./bin,-rpath=../bin,-rpath=/usr/local/lib \

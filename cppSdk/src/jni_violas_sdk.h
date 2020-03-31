@@ -14,6 +14,10 @@ jlong createNativeClient(JNIEnv *env, jobject,
                          jboolean syncWithWallet,
                          jstring faucetServer,
                          jstring mnemonic);
+//
+// function:    destroy native vlient
+// 
+void JNICALL destroy_native_client(JNIEnv *env, jobject, jlong nativeObj);
 
 //
 // Test if the validator has been connected
