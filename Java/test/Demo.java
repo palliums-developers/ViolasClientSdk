@@ -56,11 +56,11 @@ public class Demo {
         // var (txn, event) = client.getCommittedTxnsByAccSeq(1.toLong(), sequence -
         // 1.toLong());
         Pair<String, String> txn_event = client.getCommittedTxnsByAccSeq(0, sequence - 1);
-        System.out.println("the transaction is " + txn_event.getKey() + "\n" + "the event is" + txn_event.getValue());
+        System.out.println("the transaction is " + txn_event.getKey() + "\n" + "the event is " + txn_event.getValue());
 
         Pair<String, String>[] txnEvents = client.getCommitedTxnByRange(100, 100, true);
         for (Pair<String, String> x : txnEvents) {
-            System.out.println("the transaction is " + x.getKey() + "\n" + "the event is" + x.getValue());
+            System.out.println("the transaction is " + x.getKey() + "\n" + "the event is " + x.getValue());
         }
 
         client.close();
