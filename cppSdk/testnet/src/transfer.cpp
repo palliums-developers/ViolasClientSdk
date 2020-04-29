@@ -87,10 +87,10 @@ int main(int argc, char *argv[])
 
         int index;
         cout << "commands list : \n"
-                "   1 - transfer Vtoken\n"
-                "   2 - transfer token \n"
-                "   3 - create token\n"
-                "   4 - deploy 5 tokens\n"
+                "   1 - Transfer Violas coin\n"
+                "   2 - Transfer Token coin\n"
+                "   3 - Create a new Token\n"
+                "   4 - Deploy 5 tokens\n"
                 "input command index : ";
         cin >> index;
 
@@ -116,6 +116,9 @@ void transfer_libra(Violas::client_ptr client)
 {
     cout << "Let's transfer VToken ..." << endl;
 
+    auto [supervisor, sup_address] = client->create_next_account(true);
+    cout << "Account 0's address is " << sup_address.to_string() << endl;
+        
     string address;
     cout << "\tPlease input receiver address : ";
     cin >> address;
@@ -127,9 +130,7 @@ void transfer_libra(Violas::client_ptr client)
     auto receiver = Address::from_string(address);
 
     cout << "The address " << receiver << "'s balance is " << client->get_balance(receiver) << endl;
-
-    client->create_next_account(true);
-
+    
     client->mint_coins(0, amount);
 
     auto [accout_index, sequence] = client->transfer_coins_int(0, receiver, amount * MICRO_LIBRO_COIN);
