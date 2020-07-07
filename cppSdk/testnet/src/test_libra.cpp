@@ -11,7 +11,6 @@
 using namespace std;
 using namespace Libra;
 
-
 client_ptr connect(const string &url, const string &mint_key_file, const string &mnemonic_file, const string &waypoint)
 {
 
@@ -97,10 +96,16 @@ void run_test_libra(const string &url, const string &mint_key_file, const string
     //return;
 
     auto currencies = {
-        "VLSUSD", "VLSEUR", "VLSGBP", "VLSJPY", "VLSSGD",
-        "LBRUSD", "LBREUR", "LBRGBP", "LBRJPY", "LBRSGD",
-        "BTCBTC",
-        //"Test"
+        "VLSUSD",
+        "VLSEUR",
+        "VLSGBP",
+        "VLSSGD",
+        "VLS",
+        "USD",
+        "EUR",
+        "GBP",
+        "SGD",
+        "BTC",
     };
 
     for (const auto &currency : currencies)
